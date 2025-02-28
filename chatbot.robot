@@ -14,7 +14,7 @@ Abrir Site e Clicar no Chatbot
     Call Method    ${options}    add_argument    --disable-gpu
     Call Method    ${options}    add_argument    --disable-software-rasterizer
     
-    ${webdriver}=    Create WebDriver    Chrome    options=${options}
+    Create WebDriver    Chrome    options=${options}
     Go To    ${URL}
     Sleep    5s  # Aguarda o carregamento da página
     Click Element    css:.nld-chatbot-invite-container

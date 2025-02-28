@@ -1,4 +1,4 @@
-name: Agendar Testes Robot Framework
+name: Execução de teste chatbot da machine
 
 on:
   schedule:
@@ -26,6 +26,6 @@ jobs:
           chromium-browser --version
           chromedriver --version
           
-    - name: Executar Testes Robot Framework
+    - name: Executar Testes
       run: |
         robot --outputdir=resultados chatbot.robot

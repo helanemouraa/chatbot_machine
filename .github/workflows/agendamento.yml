@@ -19,12 +19,8 @@ jobs:
         sudo apt install -y chromium-browser
         pip install -r requirements.txt
 
-    - name: Usar webdriver-manager para garantir a versão do chromedriver
+    - name: Verificar instalação do Chromium e Chromedriver
       run: |
-        python -m webdriver_manager.chrome --install
-
-        - name: Verificar instalação do Chromium e Chromedriver
-        run: |
           which chromium-browser
           which chromedriver
           chromium-browser --version

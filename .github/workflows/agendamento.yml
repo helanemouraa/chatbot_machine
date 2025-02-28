@@ -22,4 +22,4 @@ jobs:
 
     - name: Executar Testes Robot Framework
       run: |
-        robot --outputdir=resultados teste.robot
+        robot --outputdir=resultados chatbot.robot

@@ -1,0 +1,74 @@
+# Arquivos específicos de teste
+screenshots/
+resultados/
+output/
+logs/
+.rebot/
+
+# Ignorar arquivos de logs
+*.log
+output.xml
+log.html
+report.html
+debug.log
+
+# Ignorar arquivos de configurações específicas do sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de dependências
+*.egg-info/
+.Python
+
+# Ignorar arquivos gerados por testes
+.coverage
+htmlcov/
+*.cover
+*.py,cover
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignorar arquivos de build
+build/
+dist/
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.Trashes
+._*

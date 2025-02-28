@@ -1,0 +1,25 @@
+name: Agendar Testes Robot Framework
+
+on:
+  schedule:
+    - cron: '30 13-23/1 * * *'  # Executa a cada hora, começando às 13:30
+    - cron: '*/20 13-23 * * *'   # Executa a cada 20 minutos entre 13:00 e 23:59
+  workflow_dispatch:   # Permite executar manualmente o workflow quando necessário
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do repositório
+      uses: actions/checkout@v4
+
+    - name: Instalar dependências
+      run: |
+        sudo apt update
+        sudo apt install -y chromium-browser chromium-chromedriver
+        pip install -r requirements.txt
+
+    - name: Executar Testes Robot Framework
+      run: |
+        robot --outputdir=resultados teste.robot

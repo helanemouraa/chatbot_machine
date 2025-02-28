@@ -18,7 +18,6 @@ jobs:
         sudo apt update
         sudo apt install -y chromium-browser
         pip install -r requirements.txt
-        pip install webdriver-manager
 
     - name: Usar webdriver-manager para garantir a versão do chromedriver
       run: |

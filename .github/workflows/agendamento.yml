@@ -13,40 +13,11 @@ jobs:
     - name: Checkout do repositório
       uses: actions/checkout@v4
 
-    - name: Configurar Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.8'
-
-    - name: Instalar dependências do sistema
+    - name: Instalar dependências
       run: |
         sudo apt update
-        sudo apt install -y wget unzip
-
-        # Instala o Chrome
-        wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-        echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-        sudo apt update
-        sudo apt install -y google-chrome-stable
-
-        # Instala o ChromeDriver
-        CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
-        wget -N https://chromedriver.storage.googleapis.com/$CHROME_VERSION/chromedriver_linux64.zip
-        unzip chromedriver_linux64.zip
-        sudo mv chromedriver /usr/local/bin/chromedriver
-        sudo chmod +x /usr/local/bin/chromedriver
-
-    - name: Instalar dependências do Python
-      run: |
-        pip install --upgrade pip
+        sudo apt install -y chromium-browser chromium-chromedriver
         pip install -r requirements.txt
-
     - name: Executar Testes Robot Framework
       run: |
         robot --outputdir=resultados chatbot.robot
-
-    - name: Upload dos Resultados dos Testes
-      uses: actions/upload-artifact@v4
-      with:
-        name: resultados
-        path: resultados/

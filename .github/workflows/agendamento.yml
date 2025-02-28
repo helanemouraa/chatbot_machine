@@ -2,8 +2,8 @@ name: Agendar Testes Robot Framework
 
 on:
   schedule:
-    - cron: '*/20 13-23 * * *'   # Executa a cada 20 minutos entre 13:00 e 23:59
-  workflow_dispatch:   # Permite executar manualmente o workflow quando necessário
+    - cron: '*/20 13-23 * * *'  # Executa a cada 20 minutos entre 13:00 e 23:59
+  workflow_dispatch:  # Permite executar manualmente o workflow quando necessário
 
 jobs:
   run_tests:
@@ -16,8 +16,21 @@ jobs:
     - name: Instalar dependências
       run: |
         sudo apt update
-        sudo apt install -y chromium-browser chromium-chromedriver
+        sudo apt install -y chromium-browser
         pip install -r requirements.txt
+        pip install webdriver-manager
+
+    - name: Usar webdriver-manager para garantir a versão do chromedriver
+      run: |
+        python -m webdriver_manager.chrome --install
+
+        - name: Verificar instalação do Chromium e Chromedriver
+        run: |
+          which chromium-browser
+          which chromedriver
+          chromium-browser --version
+          chromedriver --version
+          
     - name: Executar Testes Robot Framework
       run: |
         robot --outputdir=resultados chatbot.robot

@@ -42,3 +42,10 @@ jobs:
         to: ${{ secrets.EMAIL_DESTINATARIO }}
         from: ${{ secrets.EMAIL_USUARIO }}
         attachments: "resultados/output.xml, resultados/log.html, resultados/report.html"
+    
+    - name: Enviar mensagem no Discord
+      run: |
+        curl -H "Content-Type: application/json" \
+             -X POST \
+             -d '{"content": "**📢 Resultados dos Testes:**\nOs testes foram concluídos! Veja os arquivos anexos.", "username": "Test Bot"}' \
+             ${{ secrets.DISCORD_WEBHOOK_URL }}

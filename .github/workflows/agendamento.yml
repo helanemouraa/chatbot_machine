@@ -30,19 +30,6 @@ jobs:
       run: |
         robot --outputdir=resultados chatbot.robot
     
-    - name: Enviar e-mail com resultados
-      uses: dawidd6/action-send-mail@v4
-      with:
-        server_address: smtp.gmail.com
-        server_port: 465
-        username: ${{ secrets.EMAIL_USUARIO }}
-        password: ${{ secrets.EMAIL_SENHA }}
-        subject: "Resultados dos Testes"
-        body: "Os testes foram concluídos. Veja os arquivos anexos."
-        to: ${{ secrets.EMAIL_DESTINATARIO }}
-        from: ${{ secrets.EMAIL_USUARIO }}
-        attachments: "resultados/output.xml, resultados/log.html, resultados/report.html"
-    
     - name: Enviar mensagem no Discord
       run: |
         curl -H "Content-Type: application/json" \

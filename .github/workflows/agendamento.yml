@@ -48,19 +48,10 @@ jobs:
     - name: Definir mensagem do Discord com base no resultado dos testes
       id: set_discord_message
       run: |
-        if [ "${{ needs.run_tests.outputs.test_status }}" == "passed" ]; then
+        if [ "${{ steps.run_tests.outputs.test_status }}" == "passed" ]; then
           echo "discord_message=**📢 Resultados dos Testes:** Todos os testes passaram! ✅ " >> $GITHUB_OUTPUT
         else
           echo "discord_message=**📢 Resultados dos Testes:** Alguns testes falharam. ❌" >> $GITHUB_OUTPUT
-        fi
-
-    - name: Definir mensagem do Discord com base no resultado dos testes
-      id: set_discord_message
-      run: |
-        if [ "${{ needs.run_tests.outputs.test_status }}" == "passed" ]; then
-          echo "::set-output name=discord_message::**📢 Resultados dos Testes:** Todos os testes passaram! ✅ "
-        else
-          echo "::set-output name=discord_message::**📢 Resultados dos Testes:** Alguns testes falharam. ❌ "
         fi
 
     - name: Enviar mensagem no Discord

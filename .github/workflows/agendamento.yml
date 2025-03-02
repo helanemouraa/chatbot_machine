@@ -27,8 +27,12 @@ jobs:
           chromedriver --version
           
     - name: Executar Testes
+      id: run_tests
       run: |
-        robot --outputdir=resultados chatbot.robot
+        robot --outputdir=resultados chatbot.robot || echo "::set-output name=test_status::failed"
+        if [ $? -eq 0 ]; then
+          echo "::set-output name=test_status::passed"
+        fi
     
     - name: Enviar e-mail com resultados
       uses: dawidd6/action-send-mail@v4
@@ -43,9 +47,18 @@ jobs:
         from: ${{ secrets.EMAIL_USUARIO }}
         attachments: "resultados/output.xml, resultados/log.html, resultados/report.html"
     
+    - name: Definir mensagem do Discord com base no resultado dos testes
+      id: set_discord_message
+      run: |
+        if [ "${{ needs.run_tests.outputs.test_status }}" == "passed" ]; then
+          echo "::set-output name=discord_message::**📢 Resultados dos Testes:**\n ✅ Todos os testes passaram!"
+        else
+          echo "::set-output name=discord_message::**📢 Resultados dos Testes:**\n ❌ Alguns testes falharam."
+        fi
+
     - name: Enviar mensagem no Discord
       run: |
         curl -H "Content-Type: application/json" \
              -X POST \
-             -d '{"content": "**📢 Resultados dos Testes:**\nOs testes foram concluídos! Veja os arquivos anexos.", "username": "Test Bot"}' \
+             -d '{"content": "${{ steps.set_discord_message.outputs.discord_message }}", "username": "Test Bot"}' \
              ${{ secrets.DISCORD_WEBHOOK_URL }}

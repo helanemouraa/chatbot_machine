@@ -29,11 +29,9 @@ jobs:
     - name: Executar Testes
       id: run_tests
       run: |
-        robot chatbot.robot && echo "test_status=passed" >> "$GITHUB_ENV" || echo "test_status=failed" >> "$GITHUB_ENV"
-        echo "test_status=${test_status}" >> "$GITHUB_OUTPUT"
+        robot chatbot.robot && echo "test_status=passed" >> $GITHUB_OUTPUT || echo "test_status=failed" >> $GITHUB_OUTPUT
     
     - name: Enviar e-mail com resultados
-      if: ${{ steps.run_tests.outputs.test_status == 'failed' }}
       uses: dawidd6/action-send-mail@v4
       with:
         server_address: smtp.gmail.com

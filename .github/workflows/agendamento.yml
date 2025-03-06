@@ -39,10 +39,13 @@ jobs:
         username: ${{ secrets.EMAIL_USUARIO }}
         password: ${{ secrets.EMAIL_SENHA }}
         subject: "Resultados dos Testes"
-        body: "Alguns testes falharam. Veja os arquivos anexos."
+        body: "Os testes foram concluídos. Veja os arquivos anexos."
         to: ${{ secrets.EMAIL_DESTINATARIO }}
         from: ${{ secrets.EMAIL_USUARIO }}
         attachments: "resultados/output.xml, resultados/log.html, resultados/report.html"
+
+    - name: Verificar arquivos de resultados
+      run: ls -l resultados/
     
     - name: Definir mensagem do Discord com base no resultado dos testes
       id: set_discord_message

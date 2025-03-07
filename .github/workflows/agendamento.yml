@@ -2,7 +2,7 @@ name: Execução de teste chatbot da machine
 
 on:
   schedule:
-    - cron: '0 */2 * * *'  # Executa a cada 2 horas
+    - cron: '0 */3 * * *'  # Executa a cada 2 horas
   workflow_dispatch:  # Permite executar manualmente o workflow quando necessário
 
 jobs:

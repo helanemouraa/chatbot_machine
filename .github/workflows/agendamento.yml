@@ -40,7 +40,7 @@ jobs:
         username: ${{ secrets.EMAIL_USUARIO }}
         password: ${{ secrets.EMAIL_SENHA }}
         subject: "Resultados dos Testes"
-        body: "Os testes foram concluídos. Veja os arquivos anexos."
+        body: "Alguns testes falharam. Verifique os arquivos em anexo."
         to: ${{ secrets.EMAIL_DESTINATARIO }}
         from: ${{ secrets.EMAIL_USUARIO }}
         attachments: "resultados/output.xml, resultados/log.html, resultados/report.html"
@@ -54,7 +54,7 @@ jobs:
         if [ "${{ steps.run_tests.outputs.test_status }}" == "passed" ]; then
           echo "discord_message=**📢 Resultados dos Testes:** Todos os testes passaram! ✅ " >> $GITHUB_OUTPUT
         else
-          echo "discord_message=**📢 Resultados dos Testes:** Alguns testes falharam. ❌" >> $GITHUB_OUTPUT
+          echo "discord_message=**📢 Resultados dos Testes:** Alguns testes falharam. ❌ Verifique o email para mais detalhes." >> $GITHUB_OUTPUT
         fi
 
     - name: Enviar mensagem no Discord

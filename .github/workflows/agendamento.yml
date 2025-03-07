@@ -39,14 +39,11 @@ jobs:
         server_port: 465
         username: ${{ secrets.EMAIL_USUARIO }}
         password: ${{ secrets.EMAIL_SENHA }}
-        subject: "Resultados dos Testes"
+        subject: "Testes - Chatbot machine"
         body: "Alguns testes falharam. Verifique os arquivos em anexo."
-        to: ${{ secrets.EMAIL_DESTINATARIO }}
+        to: "helanemoura@gaudium.com.br, helanemouraa@gmail.com"
         from: ${{ secrets.EMAIL_USUARIO }}
         attachments: "resultados/output.xml, resultados/log.html, resultados/report.html"
-
-    - name: Verificar arquivos de resultados
-      run: ls -l resultados/
     
     - name: Definir mensagem do Discord com base no resultado dos testes
       id: set_discord_message

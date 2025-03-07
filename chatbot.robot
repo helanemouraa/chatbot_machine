@@ -75,6 +75,6 @@ Abrir Site e Clicar no Chatbot
     ${whatsapp_link}=    Get Element Attribute    css:.nld-bubble a    href
 
     # Verifica se o link é do WhatsApp
-    Should Contain    ${whatsapp_link}    https://web.whatsapp.com/send?text=Ol%C3%A1%21+Estava+navegando+no+site+da+Machine.&phone=5521976985433
+    Should Contain    ${whatsapp_link}    https://web.whatsapp.com/send?text=Ol%C3%A1%21+Estav2a+navegando+no+site+da+Machine.&phone=5521976985433
 
     Close Browser

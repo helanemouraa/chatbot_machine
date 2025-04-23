@@ -50,11 +50,22 @@ on:
 - Alerta é enviado ao canal #monitoramento-chatbot
 - E-mail com relatório completo é enviado para os responsáveis.
 
+---
+
+## 🔐 Privacidade e Segurança
+
+Este repositório não contém dados sensíveis nem logs de execução com informações reais.
+Arquivos como log.html, report.html e output.xml são gerados dinamicamente apenas durante a execução do GitHub Actions, e estão listados no .gitignore, garantindo que não sejam versionados ou expostos publicamente.
+
+O envio de relatórios por e-mail e notificações no Discord são realizados em tempo de execução, utilizando credenciais armazenadas de forma segura via GitHub Secrets.
+
+---
+
 ## 👤 Autor
 
 Este projeto foi desenvolvido por Helane Moura como iniciativa interna da Gaudium, com o objetivo de melhorar a confiabilidade em um dos canais de aquisição de clientes.
 
-⸻
+---
 
 ## 💡 Observações
 

@@ -7,7 +7,7 @@ ${BROWSER}  Chrome
 ${TELEFONE_TESTE}    %{TELEFONE_TESTE}
 
 *** Test Cases ***
-Abrir Site e Clicar no Chatbot
+Validar fluxo de interação do chatbot até exibição do link do WhatsApp
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
     Call Method    ${options}    add_argument    --headless
     Call Method    ${options}    add_argument    --no-sandbox

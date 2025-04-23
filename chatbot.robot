@@ -4,6 +4,7 @@ Library  SeleniumLibrary
 *** Variables ***
 ${URL}  https://machine.global
 ${BROWSER}  Chrome
+${TELEFONE_TESTE}    %{TELEFONE_TESTE}
 
 *** Test Cases ***
 Abrir Site e Clicar no Chatbot
@@ -46,7 +47,7 @@ Abrir Site e Clicar no Chatbot
     Sleep    2s  # Aguarda a próxima interação
 
     # Preenche o campo de telefone
-    Input Text    css:input#phone    (87) 99995-3189
+    Input Text    css:input#phone    ${TELEFONE_TESTE}
     Sleep    2s  # Aguarda a próxima interação
 
     # Clica no botão de enviar novamente

@@ -9,6 +9,9 @@ jobs:
   run_tests:
     runs-on: ubuntu-latest
 
+    env:
+      TELEFONE_TESTE: ${{ secrets.TELEFONE_TESTE }}
+
     steps:
     - name: Checkout do repositório
       uses: actions/checkout@v4

@@ -41,7 +41,7 @@ jobs:
         password: ${{ secrets.EMAIL_SENHA }}
         subject: "Testes - Chatbot machine"
         body: "Alguns testes falharam. Verifique os arquivos em anexo para identificar o motivo da falha."
-        to: "helanemoura@gaudium.com.br, ladegas@gaudium.com.br"
+        to: ${{secrets.EMAIL_DESTINATARIO}}
         from: ${{ secrets.EMAIL_USUARIO }}
         attachments: "resultados/output.xml, resultados/log.html, resultados/report.html"
     

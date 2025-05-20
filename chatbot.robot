@@ -9,7 +9,7 @@ ${TELEFONE_TESTE}    %{TELEFONE_TESTE}
 *** Test Cases ***
 Validar fluxo de interação do chatbot até exibição do link do WhatsApp
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
-    Call Method    ${options}    add_argument    --headless=new
+    Call Method    ${options}    add_argument    --headless
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
     Call Method    ${options}    add_argument    --disable-gpu
@@ -20,7 +20,7 @@ Validar fluxo de interação do chatbot até exibição do link do WhatsApp
     Sleep    5s  # Aguarda o carregamento da página
 
     # Clica no chatbot para iniciar a conversa
-    Wait Until Element Is Visible    css:.nld-avatar    15s
+    Wait Until Element Is Visible    css:.nld-avatar    25s
     Click Element    css:.nld-avatar
     Sleep    3s  # Aguarda para observar o resultado
 

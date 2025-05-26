@@ -22,7 +22,7 @@ Validar fluxo de interação do chatbot até exibição do link do WhatsApp
     # Move o mouse para carregar o chatbot
     Mouse Over    css:.elementor-element-b66cd22
     Sleep    2s
-    Mouse Over    css:.elementor-button-link
+    Execute JavaScript    window.scrollBy(0, 200)
     Sleep    1s
 
     # Clica no chatbot para iniciar a conversa

@@ -19,16 +19,13 @@ Validar fluxo de interação do chatbot até exibição do link do WhatsApp
     Go To    ${URL}
     Sleep    5s  # Aguarda o carregamento da página
 
-    # Move o mouse para carregar o chatbot
-    Mouse Over    css:.elementor-element-b66cd22
-    Sleep    2s
-    Execute JavaScript    window.scrollBy(0, 200)
-    Sleep    1s
+    # Garante que toda a página seja exibida
+    Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
+    Sleep    5s
 
     # Clica no chatbot para iniciar a conversa
-    Wait Until Element Is Visible    css:.nld-avatar.nld-shown-slide    40s
+    Wait Until Element Is Visible    css:.nld-avatar.nld-shown-slide    10s
     Click Element    css:.nld-avatar.nld-shown-slide
-    Sleep    3s  # Aguarda para observar o resultado    
     
     # Seleciona uma opção no chatbot (Sim, Quero conhecer)
     Wait Until Element Is Visible    css:.nld-opt    10s
